@@ -15,7 +15,7 @@ module Bankscrap
     end
 
     def to_a
-      [id, effective_date.strftime('%d/%m/%Y'), description, description_detail, amount]
+      [id, effective_date.strftime('%d/%m/%Y'), category, subcategory, description, description_detail, amount]
     end
 
     def currency
@@ -25,7 +25,7 @@ module Bankscrap
     private
 
     def inspect_attributes
-      %i(id amount effective_date description balance)
+      %i(id amount effective_date category subcategory description balance)
     end
   end
 end
