@@ -114,6 +114,8 @@ module Bankscrap
     def print_transactions_header
       say "\n"
       say 'DATE'.ljust(13)
+      say 'CATEGORY'.ljust(30) + SPACER
+      say 'SUBCATEGORY'.ljust(30) + SPACER
       say 'DESCRIPTION'.ljust(50) + SPACER
       say 'AMOUNT'.rjust(15) + SPACER
       say 'BALANCE'.rjust(15)
@@ -123,7 +125,9 @@ module Bankscrap
     def print_transaction(transaction)
       color = (transaction.amount.to_i > 0 ? :green : :red)
       say transaction.effective_date.strftime('%d/%m/%Y') + SPACER
-      say Utils::CliString.new(transaction.description).squish.truncate(50).ljust(50) + SPACER, color
+      say Utils::CliString.new(transaction.category).squish.truncate(30).ljust(30) + SPACER, color
+      say Utils::CliString.new(transaction.subcategory).squish.truncate(30).ljust(30) + SPACER, color
+      say Utils::CliString.new(transaction.description).squish.truncate(30).ljust(30) + SPACER, color
       say Utils::CliString.new(transaction.amount.format).rjust(15) + SPACER, color
       say Utils::CliString.new(transaction.balance.format).rjust(15)
     end
